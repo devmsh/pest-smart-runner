@@ -1,6 +1,6 @@
 {
-    "name": "pestphp/pest-plugin-template",
-    "description": "My awesome plugin",
+    "name": "devmsh/pest-smart-runner",
+    "description": "Run class/method/line related tests based on previous coverage report",
     "keywords": [
         "php",
         "framework",
@@ -11,13 +11,19 @@
         "plugin"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/pestphp/pest-plugin-coverage"
+        }
+    ],
     "require": {
-        "php": "^7.3",
-        "pestphp/pest": "^0.1"
+        "pestphp/pest": "dev-master",
+        "php": "^7.3"
     },
     "autoload": {
         "psr-4": {
-            "Pest\\PluginName\\": "src/"
+            "Devmsh\\PestSmartRunner\\": "src/"
         }
     },
     "require-dev": {
@@ -34,6 +40,13 @@
     "config": {
         "sort-packages": true,
         "preferred-install": "dist"
+    },
+    "extra": {
+        "pest": {
+            "plugins": [
+                "Devmsh\\PestSmartRunner\\Plugin"
+            ]
+        }
     },
     "scripts": {
         "lint": "rector process src && php-cs-fixer fix -v",
